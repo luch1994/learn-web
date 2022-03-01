@@ -1,0 +1,23 @@
+<script>
+    function Foo() {
+        getName = function () {
+            alert(1);
+        };
+        return this;
+    }
+
+    function getName() {
+        alert(5);
+    }
+    var getName;
+    Foo.getName = function () {
+        alert(2);
+    };
+    Foo.prototype.getName = function () {
+        alert(3);
+    };
+    // getName = function () {
+    //     alert(4);
+    // };
+    getName();
+</script>

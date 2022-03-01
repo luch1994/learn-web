@@ -1,0 +1,23 @@
+<script>
+    const map = new Map();
+    map.set(1, 10);
+    map.set({}, 2);
+    map.set([], 3);
+    for (const item of map) {
+        console.log(item);
+    }
+    console.log('map fn');
+    // map.map(item => {
+    //     console.log(item);
+    // })
+    console.log('======');
+    const set = new Set();
+    set.add(1);
+    set.add({});
+    set.add([]);
+    for (const item of set) {
+        console.log(item);
+    }
+    console.log('map fn');
+    // set.map(item => console.log(item));
+</script>

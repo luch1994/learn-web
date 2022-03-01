@@ -1,0 +1,4 @@
+<!--pages/index/index.wxml-->
+<!-- 暗号：talk is cheap -->
+<canvas type="2d" id="myCanvas" style="height:300px;width:300px;"></canvas>
+<button type="primary" bindtap="savePoster">保存海报</button>

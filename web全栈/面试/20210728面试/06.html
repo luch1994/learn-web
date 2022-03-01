@@ -1,0 +1,49 @@
+<script>
+    // Promise.all 、Promise.race和Promise.allSettled的区别，里面有报错分别怎么处理
+    const err = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject(new Error('111'));
+        }, 1000);
+    })
+    const success = new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(1)
+        }, 200);
+    });
+    // Promise.all([err, success, 2, () => []]).then(() => {
+    //     console.log('promise all success');
+    // }).catch(e => {
+    //     console.log(e);
+    //     console.log('promise all error')
+    // });
+
+    // Promise.race([err, success]).then((d) => {
+    //     console.log(d)
+    //     console.log('promise race success');
+    // }).catch(e => {
+    //     console.log(e);
+    //     console.log('promise race error')
+    // });
+
+    // Promise.race([err, success, 2, () => []]).then((d) => {
+    //     console.log(d)
+    //     console.log('promise race success');
+    // }).catch(e => {
+    //     console.log(e);
+    //     console.log('promise race error')
+    // });
+
+    const promise1 = Promise.resolve(3);
+    const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'foo'));
+    const promises = [promise1, promise2];
+
+    Promise.allSettled(promises).
+        then((results) => results.forEach((result) => console.log(result.status)));
+
+    /**
+     * Promise.all传的数组可以不是Promise对象，可以是任意的，如果是函数会执行，否则直接返回
+     * Promise.all必须所有的都是成功的，才会进入then，否则会报错
+     * Promise.race只管第一个相应的是成功还是失败
+     * Promise.allSettled会在回调里返回所有执行结果的状态
+     * */
+</script>
